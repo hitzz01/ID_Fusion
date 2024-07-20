@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visiting Pass</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            padding: 10px;
+            background-color: rgb(111, 111, 111);
+            color: white;
+            font-size: 25px;
+        }
+        .visiting-pass {
+            padding: 30px;
+            border: 2px solid rgb(111, 111, 111);
+            text-align: center;
+        }
+        .visiting-pass p {
+            margin: 8px 0;
+            font-size: 18px;
+            color: #616161;
+        }
+        .visiting-pass strong {
+            font-weight: bold;
+            font-size: 20px;
+            color: #212121;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Visiting Pass</h1>
+        </div>
+        <div class="visiting-pass">
+            <p><strong>Name:</strong> {{ name }}<br>
+            <strong>Date of Birth:</strong> {{ birth_date }}<br>
+            <strong> Mobile Number: </strong> {{ mobile_number }}<br>
+            <strong> Date of Visiting:</strong> {{ date_of_visiting }} <br>
+            <strong> Duration of Visiting: </strong> {{ duration_of_visiting }} hours<br>
+            {% if pan_number %}
+            <strong>PAN Number:</strong> {{ pan_number }}<br>
+            {% endif %}
+            {% if aadhaar_number %}
+            <strong>Aadhaar Number:</strong> {{ aadhaar_number }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

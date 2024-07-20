@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visiting Pass</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Lato', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-image: url(https://images.unsplash.com/photo-1684569547117-e2d19fc6d796?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.396);
+            padding: 30px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            backdrop-filter: blur(7px);
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .id-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        h1 {
+            font-size: 3vw;
+            color: #000000;
+            margin-bottom: 30px;
+            animation: textPopUp 0.5s ease-in-out;
+        }
+
+        .id-card p {
+            margin: 5px 0;
+            font-size: 20px;
+            color: #000000;
+            animation: textPopUp 0.5s ease-in-out 0.4s;
+        }
+
+        .file-upload-btn {
+            background-color: #00000042;
+            font-family: 'Lato', sans-serif;
+            border: none;
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .file-upload-btn:hover {
+            background-color: #ffffff7a;
+            color: #000000;
+            transform: translateY(-3px);
+            transition: 0.3s ease, transform 0.5s ease;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: calc(100% - 150px);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 25px;
+            box-sizing: border-box;
+            background: #0000001c;
+            color: #000000;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        input[type="text"]:hover,
+        input[type="date"]:hover,
+        select:hover {
+            background-color: #ffffff7a;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        select:focus {
+            background-color: #ffffff7a;
+            color: #000000;
+            transform: translateY(-3px);
+            transition: 0.3s ease, transform 0.5s ease;
+            outline: none;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+            text-align: right;
+            margin-right: 10px;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .qr-code {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInUp 1s ease-in-out;
+            height: 100%;
+        }
+
+        .qr-code img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.396);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .detail {
+            font-size: 25px;
+            color: rgb(0, 0, 0);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textPopUp {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        @media screen and (max-width: 705px) {
+            .container {
+                flex-direction: column;
+                width: 85%;
+            }
+
+            .id-card {
+                margin-bottom: 2px;
+            }
+
+            .file-upload-btn {
+                font-size: 15px;
+                padding: 10px 0;
+                margin-bottom: 2px;
+            }
+
+            .qr-code img {
+                max-width: 150px;
+            }
+
+            h1 {
+                font-size: 6vw;
+                margin-bottom: 2px;
+            }
+
+            input[type="text"],
+            input[type="date"],
+            select {
+                width: calc(100% - 150px);
+                padding: 10px;
+                margin: 10px 0;
+                border-radius: 25px;
+                box-sizing: border-box;
+                background: #0000001c;
+                color: #000000;
+                border: none;
+                transition: background-color 0.3s ease, transform 0.3s ease;
+            }
+
+        }
+
+        @media screen and (max-width: 500px) {
+            .container {
+                flex-direction: column;
+                width: 80%;
+            }
+
+            .id-card {
+                margin-bottom: 2px;
+            }
+
+            .file-upload-btn {
+                font-size: 14px;
+                padding: 10px 0;
+                margin-bottom: 2px;
+            }
+
+            .qr-code {
+                height: auto;
+            }
+
+            .hover {
+                width: 150px;
+                height: auto;
+            }
+
+            .expiry {
+                font-size: 15px;
+            }
+
+            h1 {
+                font-size: 8vw;
+                margin-bottom: 2px;
+            }
+
+            input[type="text"],
+            input[type="date"],
+            select {
+                width: calc(100% - 100px);
+                padding: 8px;
+                margin: 8px 0;
+                border-radius: 25px;
+                box-sizing: border-box;
+                background: #0000001c;
+                color: #000000;
+                border: none;
+                transition: background-color 0.3s ease, transform 0.3s ease;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            h1 {
+                font-size: 8vw;
+                margin-bottom: 5px;
+            }
+
+            .container {
+                flex-direction: column;
+                width: 75%;
+            }
+
+            .id-card {
+                margin-bottom: 1px;
+            }
+
+            .id-card p {
+                font-size: 16px;
+            }
+
+            .hover {
+                width: 100px;
+                height: auto;
+            }
+
+            .expiry {
+                font-size: 12px;
+            }
+
+            .file-upload-btn {
+                font-size: 12px;
+                padding: 8px 0;
+                margin-bottom: 2px;
+            }
+
+            input[type="text"],
+            input[type="date"] {
+                width: calc(100% - 100px);
+                padding: 8px;
+                margin: 8px 0;
+                border-radius: 25px;
+                box-sizing: border-box;
+                background: #0000001c;
+                color: #000000;
+                border: none;
+                transition: background-color 0.3s ease, transform 0.3s ease;
+            }
+
+            .form-group {
+                font-size: 13.5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    
+<div class="container">
+    <div class="box">
+        <h1>Visitor Pass</h1>
+        {% if name %}
+        <div class="id-card">
+            <p><b>Name:</b> {{ visitor_name }}</p>
+            <p class="label"><b>Date of Birth:</b> {{ birth_date }}</p>
+            <p class="label"><b>Mobile Number:</b> {{ mobile_number }}</p>
+            <p class="label"><b>Date of Visiting:</b> {{ date_of_visiting }}</p>
+            <p class="label"><b>Duration of Visiting:</b> {{ duration_of_visiting }} hours</p>
+            {% if pan_number %}
+            <p class="label"><b>PAN Number:</b> {{ pan_number }}</p>
+            {% endif %}
+            {% if aadhaar_number %}
+            <p class="label"><b>Aadhaar Number:</b> {{ aadhaar_number }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
+        {% if not form_submitted %}
+        <div class="file-upload">
+            <form action="{% url 'upload_image' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobile_number">Mobile Number:</label>
+                    <input type="text" name="mobile_number" required>
+                </div>
+                <div class="form-group">
+                    <label for="date_of_visiting">Date of Visiting:</label>
+                    <input type="date" name="date_of_visiting" required>
+                </div>
+                <div class="form-group">
+                    <label for="duration_of_visiting">Duration of Visiting:</label>
+                    <input placeholder="In hours" type="text" name="duration_of_visiting" required>
+                </div>
+                <label class="file-upload-btn">
+                    Upload Aadhaar/Pan Card
+                    <input type="file" name="image" accept="image/*" id="image" onchange="displayFileName()">
+                </label>
+                <span id="file-name" style="display:block; margin-top: 10px;"></span>
+                <button type="submit" class="file-upload-btn"> <strong> Create Visitor Pass</strong></button>
+            </form>
+        </div>
+        {% endif %}
+        {% if name %}
+        <form action="{% url 'download_pdf' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="name" value="{{ name }}">
+            <input type="hidden" name="birth_date" value="{{ birth_date }}">
+            <input type="hidden" name="mobile_number" value="{{ mobile_number }}">
+            <input type="hidden" name="date_of_visiting" value="{{ date_of_visiting }}">
+            <input type="hidden" name="duration_of_visiting" value="{{ duration_of_visiting }}">
+            <input type="hidden" name="pan_number" value="{{ pan_number }}">
+            <input type="hidden" name="aadhaar_number" value="{{ aadhaar_number }}">
+            <input type="hidden" name="qr_code_image_data" value="data:image/png;base64,{{ qr_code_image_data }}">
+            <button type="submit" class="file-upload-btn">Download as PDF</button>
+        </form>
+        <form action="{% url 'home' %}" method="GET">
+        </form>
+        <form action="{% url 'home' %}" method="GET">
+            <button type="submit" class="file-upload-btn">Create Another Pass</button>
+        </form>
+        {% endif %}
+    </div>
+    <div class="qr-code">
+        {% if qr_code_image_data %}
+        <p class="expiry">QR Code will expire on: {{ expiration_time }}</p>
+        <img class="hover" id="qrCode" src="data:image/png;base64,{{ qr_code_image_data }}" alt="QR Code">
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    function displayFileName() {
+        var input = document.getElementById('image');
+        var fileName = input.files[0].name;
+        var fileNameDisplay = document.getElementById('file-name');
+        fileNameDisplay.textContent = 'Selected file: ' + fileName;
+    }
+</script>
+</body>
+
+</html>
